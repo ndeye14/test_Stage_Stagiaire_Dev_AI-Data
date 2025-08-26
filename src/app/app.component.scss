@@ -1,0 +1,42 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.content {
+  padding: 1rem;
+}
+ .sidenav-container {
+  height: 100vh;
+}
+
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.app-sidenav {
+  width: 220px;
+}
+
+/* Desktop : on cache le burger et on montre les liens */
+.mobile-toggle {
+  display: none;
+}
+.desktop-menu {
+  display: flex;
+}
+
+/* Mobile : on cache les liens et on montre le burger */
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: inline-flex;
+  }
+  .desktop-menu {
+    display: none;
+  }
+}

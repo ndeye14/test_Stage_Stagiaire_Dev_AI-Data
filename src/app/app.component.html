@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="app-sidenav" mode="over">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/upload" (click)="sidenav.close()">Upload</a>
+      <a mat-list-item routerLink="/dashboard" (click)="sidenav.close()">Dashboard</a>
+      <a mat-list-item routerLink="/table" (click)="sidenav.close()">Table</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <!-- Burger (affiché uniquement sur mobile via CSS) -->
+      <button mat-icon-button class="mobile-toggle" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span class="title">E-commerce Analyzer</span>
+      <span class="spacer"></span>
+
+      <!-- Liens (affichés uniquement sur desktop via CSS) -->
+      <nav class="desktop-menu">
+        <button mat-button routerLink="/upload">Upload</button>
+        <button mat-button routerLink="/dashboard">Dashboard</button>
+        <button mat-button routerLink="/table">Table</button>
+      </nav>
+    </mat-toolbar>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

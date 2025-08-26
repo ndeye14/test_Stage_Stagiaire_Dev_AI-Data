@@ -1,0 +1,38 @@
+<mat-card>
+  <h2 style="text-align: center; font-weight: bold">
+    Importer vos données CSV
+  </h2>
+  <input
+    type="file"
+    (change)="onFileSelected($event)"
+    accept=".csv"
+    style="display: block; margin: 1em auto; width: 100%; max-width: 300px"
+  />
+
+  <div
+    *ngIf="anomalies.length === 0 && data.length > 0"
+    style="margin-top: 2em; text-align: center"
+  >
+    <h3 class="mat-headline" style="color: green">
+      <mat-icon>check_circle</mat-icon> Pas d'anomalie détectée
+    </h3>
+  </div>
+  <div *ngIf="anomalies.length" style="margin-top: 2em">
+    <h3>Aperçu des anomalies ({{ anomalies.length }})</h3>
+    <mat-table [dataSource]="anomalies | slice : 0 : 5">
+      <ng-container matColumnDef="reason">
+        <mat-header-cell *matHeaderCellDef>Raison</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.reason }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="index">
+        <mat-header-cell *matHeaderCellDef>Ligne</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.index + 1 }}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="['reason', 'index']"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: ['reason', 'index']"></mat-row>
+    </mat-table>
+  </div>
+</mat-card>
+

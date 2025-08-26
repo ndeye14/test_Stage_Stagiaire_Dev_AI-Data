@@ -1,0 +1,45 @@
+<div class="dashboard">
+  <div class="dashboard-row">
+    <mat-card class="dashboard-card dashboard-card--revenue">
+      <mat-card-header>
+        <mat-card-title>Chiffre d'affaires total</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="dashboard-card__content">
+        <p class="dashboard-card__number">{{ revenue | currency:'EUR' }}</p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-card dashboard-card--orders">
+      <mat-card-header>
+        <mat-card-title>Nombre de commandes</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="dashboard-card__content">
+        <p class="dashboard-card__number">{{ orders }}</p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-card dashboard-card--orders">
+      <mat-card-header>
+        <mat-card-title>Taux d’anomalies</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="dashboard-card__content">
+        <p class="dashboard-card__number">{{ anomalyRate | number:'1.2-2' }}%</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<mat-card>
+  <h4>Types d'anomalies détectées</h4>
+  <div style="display: block;">
+    <p *ngIf="anomalies.length === 0" style="text-align: center; font-weight: bold; color: green;">Pas d'anomalie détectée</p>
+    <canvas baseChart
+      [data]="anomalyChartData"
+      [options]="anomalyChartOptions"
+      [type]="anomalyChartType"
+      >
+    </canvas>
+  </div>
+</mat-card>
+
+
+
+
